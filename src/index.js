@@ -46,17 +46,14 @@ async function createGallery(page = 1) {
 
     lightbox.refresh();
 
-    // Notiflix.Notify.info('Hooray! We found ${totalHits} images.');
+    Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
 
     if (hits.length === 40) {
       btnLoadMore.style.display = 'block';
     }
 
-    if (gallery.children.length === totalHits) {
+    if (gallery.children.length === totalHits && page !== 1) {
       btnLoadMore.style.display = 'none';
-      return Notiflix.Notify.info(
-        "We`re sorry, but you've reached the end of search results."
-      );
     }
   } catch (error) {
     console.log(error);
